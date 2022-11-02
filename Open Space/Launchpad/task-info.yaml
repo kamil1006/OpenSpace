@@ -1,0 +1,25 @@
+type: edu
+files:
+- name: hstest/test.js
+  visible: false
+  learner_created: false
+- name: src/index.html
+  visible: true
+  text: |-
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Open Space</title>
+    </head>
+    <body>
+        Hello, World!
+    </body>
+    </html>
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/11733#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Thu, 18 Nov 2021 17:22:35 UTC
+record: 1

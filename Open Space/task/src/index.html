@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Open Space</title>
+    <style>
+
+        body, html {
+            height: 100%;
+        }
+
+        .space {
+            background-image : url("images/space.png");
+            margin: 1px;
+
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+
+        }
+
+
+        .planet {
+            background-image : url("images/mars.png");
+
+            width: 400px;
+            height: 400px;
+
+            background-repeat: no-repeat;
+            background-size: contain;
+            /* border: 1px solid red;*/
+            position: absolute;
+            bottom:0px;
+
+            z-index: 3;
+
+
+        }
+
+        .rocket{
+            width: 100px;
+            height: 100px;
+
+            position: absolute;
+            bottom:210px;
+            left:220px;
+            transform: rotate(30deg);
+
+            z-index: 2;
+
+        <!--
+        animation-name: flying_rocket;
+        animation-duration: 4s;
+        -->
+        }
+
+        @keyframes flying_rocket {
+            0%   { left:220px; bottom:210px;}
+            25%  { left:420px; bottom:410px;}
+            50%  { left:620px; bottom:610px;}
+            75%  { left:820px; bottom:810px;}
+            100% { left:5220px; bottom:5210px;}
+        }
+
+
+        @keyframes spin1 {
+            100% { transform:rotate(360deg); }
+        }
+        @keyframes spin2 {
+        <!--
+        100% { transform:rotate(-360deg); }
+        -->
+            0%   { left:0px; top:0px;}
+            25%  { left:200px; top:0px;}
+            50%  { left:200px; top:200px;}
+            75%  { left:0px; top:200px;}
+            100% { left:0px; top:0px;}
+
+
+        }
+        @keyframes idle { 100% {} }
+
+        .control-panel{
+            width: 330px;
+            height: 230px;
+
+            background-color:gray;
+
+            position: absolute;
+            bottom:20px;
+            left:480px;
+
+            z-index: 3;
+
+            background-image: repeating-linear-gradient(45deg, black 0px, black 10px, black 10px, yellow 10px, yellow 20px);
+
+
+        }
+
+        .control-panel__inner{
+
+            margin: 10px;
+            border:5px solid;
+            border-color: red;
+            border-radius: 25px;
+            background-color:gray;
+
+
+        }
+
+
+
+        .formularz_hasla{
+
+            text-align: center;
+            padding: 7px 0;
+        }
+        .butoniki1{
+            width: 20px;
+            height: 20px;
+            padding: 20px;
+        }
+
+
+        .btnLunch{
+
+            width: 70px;
+            height: 30px;
+            background-color: red;
+            border:2px solid;
+            border-color: white;
+            border-radius: 50%;
+        }
+
+
+        .btnOk{
+            background-color: yellow;
+            border-radius: 15px;
+        }
+
+        .input_password{
+            width: 170px;
+            background-color: black;
+            color: white;
+            border-radius: 15px;
+            border:2px solid;
+            border-color: yellow;
+
+        }
+
+
+        .lewarek{
+            width: 34px;
+            height: 60px;
+
+
+        }
+
+
+        h1, p{
+            color:white;
+        }
+
+
+        .levers{
+
+            text-align: center;
+            padding: 5px;
+
+        }
+
+
+        .check-buttons{
+
+            padding: 7px;
+            text-align: center;
+
+        }
+
+
+        .dol_pola{
+
+            padding: 7px;
+            text-align: center;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 60px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateY(-26px);
+            -ms-transform: translateY(-26px);
+            transform: translateY(-26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="space">
+    <p>Welcome to the Open Space</p>
+    <div class="planet-area">
+        <div class="planet">
+
+            <div class="rocket-area">
+
+                <img class="rocket" src="images/rocket.png" id="rakieta">
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="control-panel">
+        <div class="control-panel__inner">
+            <div class="formularz_hasla">
+                <!--  <input type="password" id="pwd" name="pwd" minlength="6" value="Enter password">
+                -->
+                <input type="text" minlength="8" id="id_pwd" value="Enter password to unlock" class="input_password">
+                <input type="button" value="OK" class="btnOk" id="id_pwd_ok">
+            </div>
+
+
+            <div class="check-buttons" id="id_butoniki">
+                <input type="checkbox" value="" class="butoniki1" id="id_chk1" >
+                <input type="checkbox" value="" class="butoniki1" id="id_chk2" >
+                <input type="checkbox" value="" class="butoniki1" id="id_chk3" >
+                <input type="checkbox" value="" class="butoniki1" id="id_chk4" >
+                <input type="checkbox" value="" class="butoniki1" id="id_chk5" >
+                <input type="checkbox" value="" class="butoniki1" id="id_chk6" >
+            </div>
+
+            <div class="levers" id="id_lewarki">
+                <!--
+                                <label class="switch" >
+                                    <input type="checkbox" id="id_sw1">
+                                    <span class="slider round"></span>
+                                </label>
+
+
+                                <label class="switch">
+                                    <input type="checkbox" id="id_sw2">
+                                    <span class="slider round"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" id="id_sw3">
+                                    <span class="slider round"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" id="id_sw4">
+                                    <span class="slider round"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" id="id_sw5">
+                                    <span class="slider round"></span>
+                                </label>
+
+                -->
+                <input type="range" min="1" max="100" value="50" class="lewarek" orient="vertical" id="id_sw1">
+                <input type="range" min="1" max="100" value="50" class="lewarek" orient="vertical" id="id_sw2">
+                <input type="range" min="1" max="100" value="50" class="lewarek" orient="vertical" id="id_sw3">
+                <input type="range" min="1" max="100" value="50" class="lewarek" orient="vertical" id="id_sw4">
+                <input type="range" min="1" max="100" value="50" class="lewarek" orient="vertical" id="id_sw5">
+
+            </div>
+
+
+            <div class="dol_pola">
+                <input type="button" value="Launch!" class="btnLunch" id="id_launch">
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<!--	----------------------------------------------------------------------  -->
+<!--	----------------------------------------------------------------------  -->
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        //------------------------------------------------------
+
+        var password = 'TrustNo1';
+
+        //var id_butoniki = document.getElementById("id_butoniki");
+        //id_butoniki.setAttribute('disabled','');
+
+        //var id_butoniki = document.getElementsByClassName('butoniki1');
+        //id_butoniki.setAttribute('disabled','');
+
+        //var id_lewarki = document.getElementById("id_lewarki");
+        //id_lewarki.setAttribute('disabled','');
+
+        var id_chk1 = document.getElementById("id_chk1");
+        id_chk1.setAttribute('disabled','');
+        var id_chk2 = document.getElementById("id_chk2");
+        id_chk2.setAttribute('disabled','');
+        var id_chk3 = document.getElementById("id_chk3");
+        id_chk3.setAttribute('disabled','');
+        var id_chk4 = document.getElementById("id_chk4");
+        id_chk4.setAttribute('disabled','');
+        var id_chk5 = document.getElementById("id_chk5");
+        id_chk5.setAttribute('disabled','');
+        var id_chk6 = document.getElementById("id_chk6");
+        id_chk6.setAttribute('disabled','');
+
+
+        var id_sw1 = document.getElementById("id_sw1");
+        id_sw1.setAttribute('disabled','');
+        var id_sw2 = document.getElementById("id_sw2");
+        id_sw2.setAttribute('disabled','');
+        var id_sw3 = document.getElementById("id_sw3");
+        id_sw3.setAttribute('disabled','');
+        var id_sw4 = document.getElementById("id_sw4");
+        id_sw4.setAttribute('disabled','');
+        var id_sw5 = document.getElementById("id_sw5");
+        id_sw5.setAttribute('disabled','');
+
+
+        var id_launch = document.getElementById("id_launch");
+        id_launch.setAttribute('disabled','');
+
+        //------------------------------------------------------
+        var id_pwd = document.getElementById("id_pwd");
+        id_pwd.addEventListener("click", function() {
+            // alert("klik");
+            if (id_pwd.type === "password") {
+                id_pwd.type = "text";
+            } else {
+                id_pwd.type = "password";
+                id_pwd.value = "";
+            }
+
+
+        });
+        //------------------------------------------------------
+
+
+        var id_pwd_ok = document.getElementById("id_pwd_ok");
+        id_pwd_ok.addEventListener("click", function() {
+            // alert("klik");
+            if (id_pwd.value === password) {
+                //alert("gut password");
+
+
+                id_chk1.removeAttribute('disabled');
+                id_chk2.removeAttribute('disabled');
+                id_chk3.removeAttribute('disabled');
+                id_chk4.removeAttribute('disabled');
+                id_chk5.removeAttribute('disabled');
+                id_chk6.removeAttribute('disabled');
+
+
+
+                id_sw1.removeAttribute('disabled');
+                id_sw2.removeAttribute('disabled');
+                id_sw3.removeAttribute('disabled');
+                id_sw4.removeAttribute('disabled');
+                id_sw5.removeAttribute('disabled');
+
+
+                if(sprawdzWlaczenia()== true)		{
+                    id_launch.removeAttribute('disabled');
+                }
+
+
+
+            } else {
+                //alert("wrong password");
+
+            }
+
+
+        });
+
+        //------------------------------------------------------
+        id_chk1.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+        id_chk2.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+
+        });
+        id_chk3.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+
+        });
+        id_chk4.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+        id_chk5.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+        id_chk6.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+
+        id_sw1.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+        id_sw2.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+        id_sw3.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+        id_sw4.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+        id_sw5.addEventListener("click", function() {
+            if(sprawdzWlaczenia()== true)		{
+                id_launch.removeAttribute('disabled');
+            }
+            else
+                id_launch.setAttribute('disabled','');
+        });
+        //------------------------------------------------------
+        id_launch.addEventListener("click", function() {
+
+            if(sprawdzWlaczenia()== true){
+                //alert("lets rock");
+                document.getElementById("rakieta").style.animation="flying_rocket 4s linear forwards";
+
+            }
+            else
+                alert("cos nie jest wlaczone");
+
+
+        });
+        //------------------------------------------------------
+    });
+
+    function sprawdzWlaczenia(){
+        let wszystkieOn = true;
+        if(!document.getElementById("id_chk1").checked) return false;
+        if(!document.getElementById("id_chk2").checked) return false;
+        if(!document.getElementById("id_chk3").checked) return false;
+        if(!document.getElementById("id_chk4").checked) return false;
+        if(!document.getElementById("id_chk5").checked) return false;
+        if(!document.getElementById("id_chk6").checked) return false;
+
+
+        if((document.getElementById("id_sw1").value != 100)) return false;
+        if((document.getElementById("id_sw2").value != 100)) return false;
+        if((document.getElementById("id_sw3").value != 100)) return false;
+        if((document.getElementById("id_sw4").value != 100)) return false;
+        if((document.getElementById("id_sw5").value != 100)) return false;
+
+        return wszystkieOn;
+
+    }
+
+
+
+
+</script>
+<!--	----------------------------------------------------------------------  -->
+<!--	----------------------------------------------------------------------  -->
+</body>
+</html>

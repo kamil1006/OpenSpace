@@ -1,0 +1,102 @@
+type: edu
+files:
+- name: src/index.html
+  visible: true
+  text: |-
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Open Space</title>
+
+        <style>
+
+            body, html {
+                height: 100%;
+            }
+
+            .space {
+                background-image : url("images/space.png");
+                margin: 1px;
+
+                width: 100%;
+                height: 100%;
+                position: absolute;
+
+
+            }
+
+
+            .planet {
+                background-image : url("images/mars.png");
+
+                width: 400px;
+                height: 400px;
+
+                background-repeat: no-repeat;
+                background-size: contain;
+                /* border: 1px solid red;*/
+                position: absolute;
+                bottom:0px;
+
+                z-index: 3;
+
+
+            }
+
+            .rocket{
+                width: 100px;
+                height: 100px;
+
+                position: absolute;
+                bottom:210px;
+                left:220px;
+                transform: rotate(30deg);
+
+                z-index: 2;
+            }
+
+
+
+
+            h1, p{
+                color:white;
+            }
+
+        </style>
+
+
+    </head>
+    <body>
+
+    <div class="space">
+        <p>Welcome to the Open Space</p>
+        <div class="planet-area">
+
+
+            <div class="planet">
+
+                <div class="rocket-area">
+
+                    <img class="rocket" src="images/rocket.png">
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+  learner_created: false
+- name: hstest/test.js
+  visible: false
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/11734#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Thu, 27 Oct 2022 13:41:18 UTC
+record: 2
